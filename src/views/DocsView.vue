@@ -4,13 +4,17 @@
       <h1>旦食 App 官网文档</h1>
 
       <div class="index">
-        <RouterLink class="index-item" to="/docs/terms">
-          <div class="title">使用条款</div>
-          <div class="subtitle">网站使用规则与免责声明</div>
-        </RouterLink>
         <RouterLink class="index-item" to="/docs/privacy">
           <div class="title">隐私政策</div>
-          <div class="subtitle">信息收集与数据使用说明</div>
+          <div class="subtitle">信息收集、使用与保护说明</div>
+        </RouterLink>
+        <RouterLink class="index-item" to="/docs/terms">
+          <div class="title">使用条款</div>
+          <div class="subtitle">平台使用规则与免责声明</div>
+        </RouterLink>
+        <RouterLink class="index-item" to="/docs/support">
+          <div class="title">技术支持</div>
+          <div class="subtitle">常见问题与联系方式</div>
         </RouterLink>
       </div>
     </div>
@@ -46,7 +50,7 @@ import { RouterLink } from 'vue-router'
 
 .index {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 24px auto;
 }
@@ -80,22 +84,6 @@ import { RouterLink } from 'vue-router'
   margin-top: 6px;
   font-size: 13px;
   color: #6f5a45;
-}
-
-.doc-content h2 {
-  font-size: 22px;
-  color: #7a4a22;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.doc-content p,
-.doc-content li {
-  color: #6f5a45;
-}
-
-.doc-content ul {
-  padding-left: 20px;
 }
 
 @media (max-width: 900px) {

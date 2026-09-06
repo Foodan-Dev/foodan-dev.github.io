@@ -5,10 +5,11 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <div class="layout">
     <header class="top-nav">
-      <div class="brand">旦食</div>
+      <RouterLink class="brand" to="/">旦食</RouterLink>
       <nav class="tabs">
         <RouterLink class="tab-link" to="/">首页</RouterLink>
         <RouterLink class="tab-link" to="/docs">文档</RouterLink>
+        <RouterLink class="tab-link" to="/docs/support">技术支持</RouterLink>
         <el-dropdown trigger="click" popper-class="friend-links-dropdown">
           <span class="tab-link dropdown-trigger">友情链接</span>
           <template #dropdown>
@@ -27,9 +28,16 @@ import { RouterLink, RouterView } from 'vue-router'
     </main>
 
     <footer class="site-footer">
-      <span>© 2026 旦食开发部</span>
-      <RouterLink to="/docs/terms">使用条款</RouterLink>
-      <RouterLink to="/docs/privacy">隐私政策</RouterLink>
+      <div class="footer-links">
+        <RouterLink to="/docs/privacy">隐私政策</RouterLink>
+        <RouterLink to="/docs/terms">使用条款</RouterLink>
+        <RouterLink to="/docs/support">技术支持</RouterLink>
+      </div>
+      <div class="footer-info">
+        <span>&copy; 2026 旦食开发部</span>
+        <span class="separator">|</span>
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">沪ICP备2021032046号-5</a>
+      </div>
     </footer>
   </div>
 </template>
@@ -57,6 +65,11 @@ import { RouterLink, RouterView } from 'vue-router'
   font-size: 22px;
   font-weight: 700;
   color: #8c4e1f;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: #d17b1f;
 }
 
 .tabs {
@@ -96,23 +109,47 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 .site-footer {
-  height: 56px;
   border-top: 1px solid #f0e8dc;
+  padding: 14px 24px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
+  gap: 6px;
   font-size: 13px;
   color: #8b735c;
 }
 
-.site-footer a {
+.footer-links {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-links a {
   color: #8b735c;
   text-decoration: none;
 }
 
-.site-footer a:hover {
+.footer-links a:hover {
   color: #d17b1f;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-info a {
+  color: #8b735c;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  color: #d17b1f;
+}
+
+.separator {
+  color: #d4c8b8;
 }
 </style>
 
