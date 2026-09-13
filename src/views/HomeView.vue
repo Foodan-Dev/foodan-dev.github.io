@@ -1,125 +1,119 @@
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { RouterLink } from 'vue-router'
+import {
+  PhArrowUpRight,
+  PhBookOpenText,
+  PhChatCircleDots,
+  PhCheckCircle,
+  PhForkKnife,
+  PhLockKey,
+  PhMagnifyingGlass,
+  PhShareNetwork,
+  PhShieldCheck,
+  PhSparkle,
+  PhUsersThree,
+} from '@phosphor-icons/vue'
+
+const revealRoot = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | undefined
+
+onMounted(() => {
+  document.title = '旦食 App | 生命不息，干饭不止'
+  observer = new IntersectionObserver(
+    (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible')),
+    { threshold: 0.12 },
+  )
+  revealRoot.value?.querySelectorAll('.reveal').forEach((el) => observer?.observe(el))
+})
+
+onBeforeUnmount(() => observer?.disconnect())
+</script>
+
 <template>
-  <section class="home-view">
-    <div class="hero-card">
-      <img class="logo" src="@/assets/logo-transparent.png" alt="旦食 Logo" />
-      <h1>旦食</h1>
-      <p class="subtitle">生命不息，干饭不止</p>
-      <p class="version">Version v0.0.0</p>
-      <div class="actions">
-        <el-button class="action-primary" type="primary" size="large">下载</el-button>
-        <el-button
-          class="action-secondary"
-          size="large"
-          plain
-          tag="a"
-          href="https://github.com/Foodan-Dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span class="github-content">
-            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M12 0C5.37 0 0 5.5 0 12.28c0 5.42 3.44 10.01 8.2 11.63.6.11.82-.27.82-.59 0-.29-.01-1.06-.02-2.09-3.34.74-4.04-1.65-4.04-1.65-.54-1.43-1.33-1.8-1.33-1.8-1.09-.77.08-.75.08-.75 1.2.09 1.83 1.29 1.83 1.29 1.07 1.88 2.8 1.34 3.48 1.03.11-.8.42-1.34.76-1.65-2.66-.31-5.47-1.37-5.47-6.09 0-1.35.46-2.45 1.22-3.32-.12-.31-.53-1.56.12-3.25 0 0 1-.33 3.3 1.27a11.2 11.2 0 0 1 6 0c2.3-1.6 3.3-1.27 3.3-1.27.65 1.69.24 2.94.12 3.25.76.87 1.22 1.97 1.22 3.32 0 4.73-2.81 5.78-5.49 6.08.43.38.82 1.11.82 2.24 0 1.62-.01 2.93-.01 3.33 0 .33.22.71.83.59A12.05 12.05 0 0 0 24 12.28C24 5.5 18.63 0 12 0z"
-              />
-            </svg>
-            GitHub
-          </span>
-        </el-button>
+  <div ref="revealRoot" class="home-page">
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <h1>生命不息，<br /><span>干饭不止</span></h1>
+          <p class="hero-lede">面向复旦大学在校师生的校园美食分享平台。</p>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/Foodan-Dev/Danshi-frontend/releases/latest" target="_blank" rel="noreferrer">
+              <span>下载旦食</span>
+              <PhArrowUpRight :size="18" weight="bold" />
+            </a>
+            <RouterLink class="text-link" to="/docs">阅读文档 <PhArrowUpRight :size="16" weight="bold" /></RouterLink>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-late" aria-label="旦食应用图标与校园美食">
+          <div class="visual-surface">
+            <div class="sun-shape" aria-hidden="true"></div>
+            <div class="photo-frame">
+              <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1100&q=85" alt="一桌新鲜的校园美食" />
+              <span class="photo-label">今天吃什么</span>
+            </div>
+            <div class="icon-card">
+              <img src="/egg-chopsticks-app-icons/egg-chopsticks-app-icon-master-1254.png" alt="旦食应用图标" />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="intro-band section-pad-sm reveal">
+      <div class="container intro-grid">
+        <div class="intro-symbol"><PhForkKnife :size="30" weight="duotone" /></div>
+        <p>你可以在旦食上分享美食体验、发布就餐提问、浏览其他同学的推荐和评价。</p>
+        <RouterLink class="circle-link" to="/docs/support" aria-label="查看技术支持">
+          <PhArrowUpRight :size="21" weight="bold" />
+        </RouterLink>
+      </div>
+    </section>
+
+    <section class="discover section-pad">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>发现好味道</h2>
+          <p>搜索餐厅和窗口，查看同学的推荐，也分享你的就餐体验。</p>
+        </div>
+        <div class="feature-layout">
+          <article class="feature-feature reveal">
+            <div class="feature-image feature-image-tall">
+              <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="热气腾腾的面食" loading="lazy" />
+            </div>
+            <div class="feature-copy">
+              <span class="feature-icon"><PhShareNetwork :size="21" weight="bold" /></span>
+              <h3>分享美食体验</h3>
+              <p>推荐或避雷一道菜，记录你真实的就餐感受。</p>
+            </div>
+          </article>
+          <div class="feature-stack">
+            <article class="feature-row reveal">
+              <div class="feature-copy">
+                <span class="feature-icon feature-icon-green"><PhChatCircleDots :size="21" weight="bold" /></span>
+                <h3>发布就餐提问</h3>
+                <p>询问美食推荐，和同学一起找到答案。</p>
+              </div>
+              <div class="feature-image feature-image-square">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=700&q=85" alt="朋友围坐分享餐食" loading="lazy" />
+              </div>
+            </article>
+            <article class="feature-row feature-row-soft reveal">
+              <div class="feature-copy">
+                <span class="feature-icon feature-icon-yellow"><PhMagnifyingGlass :size="21" weight="bold" /></span>
+                <h3>浏览推荐和评价</h3>
+                <p>搜索校园里的餐厅和窗口，看看大家正在吃什么。</p>
+              </div>
+              <div class="mini-list" aria-hidden="true">
+                <span>今日推荐</span>
+                <strong>生烫牛肉米线</strong>
+                <small>邯郸校区 · 旦苑餐厅</small>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
-
-<style scoped>
-.home-view {
-  min-height: calc(100vh - 120px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-}
-
-.hero-card {
-  width: min(640px, 100%);
-  border-radius: 24px;
-  padding: 48px 28px;
-  text-align: center;
-}
-
-.logo {
-  width: 240px;
-  height: 240px;
-  margin-bottom: 12px;
-}
-
-h1 {
-  font-size: 48px;
-  line-height: 1.2;
-  color: #6a3c13;
-  font-weight: 700;
-}
-
-.subtitle {
-  margin-top: 10px;
-  font-size: 20px;
-  color: #8b572a;
-}
-
-.version {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #ae997e;
-}
-
-.actions {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.actions :deep(.action-primary) {
-  --el-button-bg-color: #d17b1f;
-  --el-button-border-color: #d17b1f;
-  --el-button-hover-bg-color: #e39138;
-  --el-button-hover-border-color: #e39138;
-  --el-button-active-bg-color: #bd6712;
-  --el-button-active-border-color: #bd6712;
-}
-
-.actions :deep(.action-secondary) {
-  --el-button-text-color: #8b572a;
-  --el-button-border-color: #dfb07d;
-  --el-button-bg-color: #fff8ef;
-  --el-button-hover-text-color: #a86424;
-  --el-button-hover-border-color: #d17b1f;
-  --el-button-hover-bg-color: #fff2e2;
-  --el-button-active-text-color: #7f4b1f;
-}
-
-.github-content {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.github-icon {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-@media (max-width: 640px) {
-  .hero-card {
-    padding: 36px 20px;
-  }
-
-  h1 {
-    font-size: 38px;
-  }
-
-  .subtitle {
-    font-size: 17px;
-  }
-}
-</style>

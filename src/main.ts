@@ -1,17 +1,18 @@
-import './assets/main.css'
-import 'element-plus/dist/index.css'
-
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import ElementPlus from 'element-plus'
-
+import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import router from './router'
+import HomeView from './views/HomeView.vue'
+import DocsView from './views/DocsView.vue'
+import './styles.css'
 
-const app = createApp(App)
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/', name: 'home', component: HomeView },
+    { path: '/docs', name: 'docs', component: DocsView },
+    { path: '/docs/:page', name: 'doc-page', component: DocsView },
+  ],
+  scrollBehavior: (to) => (to.hash ? { el: to.hash, behavior: 'smooth' } : { top: 0 }),
+})
 
-app.use(createPinia())
-app.use(router)
-app.use(ElementPlus)
-
-app.mount('#app')
+createApp(App).use(router).mount('#app')
