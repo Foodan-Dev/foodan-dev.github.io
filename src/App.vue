@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { PhGithubLogo, PhDownloadSimple } from '@phosphor-icons/vue'
+import brandMarkUrl from './assets/images/brand-mark.png'
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import { PhGithubLogo, PhDownloadSimple } from '@phosphor-icons/vue'
     <header class="site-header">
       <div class="nav-wrap">
         <RouterLink to="/" class="brand" aria-label="旦食首页">
-          <span class="brand-mark"><img src="/egg-chopsticks-app-icons/egg-chopsticks-app-icon-master-1254.png" alt="" /></span>
+          <span class="brand-mark"><img :src="brandMarkUrl" alt="" /></span>
           <span class="brand-name">旦食</span>
         </RouterLink>
         <nav class="main-nav" aria-label="主导航">
@@ -33,7 +34,7 @@ import { PhGithubLogo, PhDownloadSimple } from '@phosphor-icons/vue'
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
-          <div class="brand brand-footer"><span class="brand-mark"><img src="/egg-chopsticks-app-icons/egg-chopsticks-app-icon-master-1254.png" alt="" /></span><span class="brand-name">旦食</span></div>
+          <div class="brand brand-footer"><span class="brand-mark"><img :src="brandMarkUrl" alt="" /></span><span class="brand-name">旦食</span></div>
           <p>© 2026 旦食开发部</p>
           <a class="footer-record" href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">沪ICP备2021032046号-5</a>
         </div>
