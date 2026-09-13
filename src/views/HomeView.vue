@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import appIconUrl from '../assets/images/app-icons/egg-chopsticks-app-icon-master-1254.png'
 import {
   PhArrowUpRight,
   PhBookOpenText,
@@ -54,7 +55,7 @@ onBeforeUnmount(() => observer?.disconnect())
               <span class="photo-label">今天吃什么</span>
             </div>
             <div class="icon-card">
-              <img src="/egg-chopsticks-app-icons/egg-chopsticks-app-icon-master-1254.png" alt="旦食应用图标" />
+              <img :src="appIconUrl" alt="旦食应用图标" />
             </div>
           </div>
         </div>
