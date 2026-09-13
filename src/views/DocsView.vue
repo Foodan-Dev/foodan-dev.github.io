@@ -58,7 +58,7 @@ const faqs = [
 </script>
 
 <template>
-  <div class="docs-page">
+  <div class="docs-page" :class="{ 'docs-index-page': page === 'index' }">
     <div class="container docs-shell">
       <main class="docs-content">
         <RouterLink v-if="page !== 'index'" class="docs-back-link" to="/docs">
