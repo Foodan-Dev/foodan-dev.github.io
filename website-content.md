@@ -21,11 +21,12 @@
 
 生命不息，干饭不止
 
-Version 从 https://github.com/Foodan-Dev/Danshi-frontend/releases/ 获取最新版本号
+Android 版本、大小与下载地址由浏览器运行时从 https://dl.fdueat.com/channels/stable.json 获取；清单由 App 发布 workflow 动态写入 COS，不保存在官网 Git 仓库。
 
 操作：
 
-- [下载](https://github.com/Foodan-Dev/Danshi-frontend/releases/vx.x)（应该是最新版本号的链接）
+- 下载 Android APK：使用 COS/CDN 频道清单中的当前地址。
+- [申请 iOS 内测](/docs/support)：iOS 通过 TestFlight 安装。
 - [GitHub](https://github.com/Foodan-Dev)
 
 ## 文档首页 `/docs`
@@ -238,4 +239,4 @@ Version 从 https://github.com/Foodan-Dev/Danshi-frontend/releases/ 获取最新
 ## 备注
 
 - `/src/views/AboutView.vue` 包含默认示例文本“​​This is an about page”，但当前未在路由中注册，因此不属于网站当前可访问页面。
-- 首页“下载”按钮当前没有配置目标地址。
+- 全站“下载”按钮跳转到首页下载区；Android 使用动态 CDN 链接。

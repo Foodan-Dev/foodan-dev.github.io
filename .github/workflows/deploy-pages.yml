@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify runtime download manifest handling
+        run: node --experimental-strip-types --test test/*.test.mjs
+
       - name: Build site
         run: npm run build
 

@@ -21,10 +21,10 @@ import brandMarkUrl from './assets/images/brand-mark.png'
             <PhGithubLogo :size="19" weight="regular" />
             <span>GitHub</span>
           </a>
-          <a class="button button-small" href="https://github.com/Foodan-Dev/Danshi-frontend/releases/latest" target="_blank" rel="noreferrer">
+          <RouterLink class="button button-small" to="/#download">
             <PhDownloadSimple :size="17" weight="bold" />
             <span>下载</span>
-          </a>
+          </RouterLink>
         </div>
       </div>
     </header>
