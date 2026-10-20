@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fdueat.DanShi",
+      "sha256_cert_fingerprints": [
+        "37:FE:AC:E1:8D:43:E8:22:86:E6:A6:35:C5:B7:1A:CF:19:74:85:DE:B2:30:A3:67:7E:3F:18:7A:C5:4A:67:3E"
+      ]
+    }
+  }
+]
