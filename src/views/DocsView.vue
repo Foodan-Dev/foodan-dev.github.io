@@ -2,15 +2,17 @@
 import { computed, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { PhArrowLeft, PhArrowUpRight, PhCaretRight, PhEnvelopeSimple, PhGithubLogo } from '@phosphor-icons/vue'
+import CommunityConvention from '../components/CommunityConvention.vue'
 
-type DocPage = 'index' | 'privacy' | 'terms' | 'support'
+type DocPage = 'index' | 'privacy' | 'terms' | 'community' | 'support'
 const route = useRoute()
-const page = computed<DocPage>(() => (['privacy', 'terms', 'support'].includes(String(route.params.page)) ? String(route.params.page) as DocPage : 'index'))
+const page = computed<DocPage>(() => (['privacy', 'terms', 'community', 'support'].includes(String(route.params.page)) ? String(route.params.page) as DocPage : 'index'))
 
 const metadata: Record<DocPage, { title: string; summary: string }> = {
   index: { title: '旦食 App 官网文档', summary: '' },
   privacy: { title: '隐私政策', summary: '信息收集、使用与保护说明' },
   terms: { title: '使用条款', summary: '平台使用规则与免责声明' },
+  community: { title: '社区公约', summary: '社区行为规范与内容管理规则' },
   support: { title: '技术支持', summary: '常见问题与联系方式' },
 }
 
@@ -85,6 +87,9 @@ const faqs = [
             <RouterLink to="/docs/terms"><span><strong>使用条款</strong><small>平台使用规则与免责声明</small></span>
               <PhArrowUpRight :size="20" weight="bold" />
             </RouterLink>
+            <RouterLink to="/docs/community"><span><strong>社区公约</strong><small>社区行为规范与内容管理规则</small></span>
+              <PhArrowUpRight :size="20" weight="bold" />
+            </RouterLink>
             <RouterLink to="/docs/support"><span><strong>技术支持</strong><small>常见问题与联系方式</small></span>
               <PhArrowUpRight :size="20" weight="bold" />
             </RouterLink>
@@ -151,6 +156,8 @@ const faqs = [
               </a></div>
           </section>
         </article>
+
+        <CommunityConvention v-else-if="page === 'community'" />
 
         <article v-else class="prose support-prose">
           <section>

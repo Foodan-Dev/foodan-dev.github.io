@@ -174,6 +174,13 @@ img { display: block; max-width: 100%; }
 .prose ul { margin: 0; padding-left: 20px; }
 .prose li { padding-left: 6px; margin: 8px 0; }
 .prose-subsection { margin-top: 8px; }
+.convention-prose h3 { margin: 40px 0 14px; color: var(--ink); font-size: 19px; letter-spacing: -.03em; }
+.convention-prose h2 + h3 { margin-top: 0; }
+.convention-prose h4 { margin: 26px 0 9px; color: var(--ink); font-size: 16px; letter-spacing: -.02em; }
+.convention-prose ul, .convention-prose ol { margin: 0 0 15px; }
+.convention-prose ol { padding-left: 22px; }
+.convention-prose strong { color: var(--ink); }
+.convention-prose a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }
 .docs-index { padding-top: 50px; }
 .docs-index-list { width: min(650px, 100%); margin-inline: auto; display: grid; gap: 10px; }
 .docs-index-list a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
@@ -260,6 +267,8 @@ img { display: block; max-width: 100%; }
   .prose section { margin-bottom: 42px; }
   .prose h2 { font-size: 22px; }
   .prose p, .prose li { font-size: 14px; line-height: 1.8; }
+  .convention-prose h3 { margin-top: 34px; font-size: 18px; }
+  .convention-prose h4 { font-size: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
