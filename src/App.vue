@@ -39,7 +39,7 @@ import brandMarkUrl from './assets/images/brand-mark.png'
           <a class="footer-record" href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">沪ICP备2021032046号-5</a>
         </div>
         <div class="footer-links">
-          <div><span class="footer-title">文档</span><RouterLink to="/docs/privacy">隐私政策</RouterLink><RouterLink to="/docs/terms">使用条款</RouterLink><RouterLink to="/docs/support">技术支持</RouterLink></div>
+          <div><span class="footer-title">文档</span><RouterLink to="/docs/privacy">隐私政策</RouterLink><RouterLink to="/docs/terms">使用条款</RouterLink><RouterLink to="/docs/community">社区公约</RouterLink><RouterLink to="/docs/support">技术支持</RouterLink></div>
           <div><span class="footer-title">社区</span><a href="https://github.com/FDUCSLG" target="_blank" rel="noreferrer">FDUCSLG</a><a href="https://github.com/Foodan-Dev" target="_blank" rel="noreferrer">Foodan-Dev</a></div>
         </div>
       </div>
