@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { PhGithubLogo, PhDownloadSimple } from '@phosphor-icons/vue'
-import brandMarkUrl from './assets/images/brand-mark.png'
+import brandMarkUrl from './assets/images/app-icons/egg_chopsticks_transparent.svg'
 </script>
 
 <template>

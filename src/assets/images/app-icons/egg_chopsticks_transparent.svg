@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Orange sunny-side-up egg and chopsticks icon with transparent background">
+  <defs>
+    <linearGradient id="stick1" x1="0.08" y1="1" x2="0.9" y2="0" objectBoundingBox="true">
+      <stop stop-color="#ffad11"/><stop offset="0.55" stop-color="#ff9800"/><stop offset="1" stop-color="#ff8b00"/>
+    </linearGradient>
+    <linearGradient id="stick2" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#ffb31c"/><stop offset="0.55" stop-color="#ff9700"/><stop offset="1" stop-color="#ff9000"/>
+    </linearGradient>
+    <linearGradient id="eggRim" x1="0" y1="0" x2="0.3" y2="1">
+      <stop stop-color="#fffefd"/><stop offset="0.56" stop-color="#fff8f1"/><stop offset="0.84" stop-color="#f0ddca"/><stop offset="1" stop-color="#d7b998"/>
+    </linearGradient>
+    <linearGradient id="eggWhite" x1="0.26" y1="0" x2="0.65" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.6" stop-color="#fefefe"/><stop offset="1" stop-color="#fcfafa"/>
+    </linearGradient>
+    <linearGradient id="yolkSide" x1="0.15" y1="0" x2="0.95" y2="1">
+      <stop offset="0" stop-color="#ffad09"/><stop offset="0.49" stop-color="#ff8100"/><stop offset="0.8" stop-color="#ff6700"/><stop offset="1" stop-color="#ff5e00"/>
+    </linearGradient>
+    <radialGradient id="yolkTop" cx="0.38" cy="0.26" r="0.8" fx="0.3" fy="0.1">
+      <stop offset="0" stop-color="#ffa814"/><stop offset="0.46" stop-color="#ff9c04"/><stop offset="1" stop-color="#ff9200"/>
+    </radialGradient>
+    <filter id="castShadow" x="-30%" y="-30%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="stickShadow" x="-30%" y="-30%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+    <filter id="yolkShadow" x="-30%" y="-30%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <!-- Chopsticks: shadows, then softly rounded orange silhouettes -->
+  <path d="M 657 314 L 745 191 C 756 177 768 176 778 178 C 798 182 803 197 799 212 C 797 220 792 225 786 233 L 703 339 Z" fill="#83522e" opacity=".18" transform="translate(5 7)" filter="url(#stickShadow)"/>
+  <path d="M 725 343 L 817 243 C 831 228 840 228 853 232 C 867 236 874 251 869 265 C 867 273 862 277 856 285 L 764 377 Z" fill="#83522e" opacity=".18" transform="translate(5 7)" filter="url(#stickShadow)"/>
+  <path d="M 657 314 L 745 191 C 756 177 768 176 778 178 C 798 182 803 197 799 212 C 797 220 792 225 786 233 L 703 339 Z" fill="url(#stick1)"/>
+  <path d="M 725 343 L 817 243 C 831 228 840 228 853 232 C 867 236 874 251 869 265 C 867 273 862 277 856 285 L 764 377 Z" fill="url(#stick2)"/>
+
+  <!-- Soft cast shadow beneath the fried egg -->
+  <path d="M 162 557 C 195 486 285 408 373 360 C 462 310 549 299 608 307 C 696 316 756 359 797 428 C 830 480 830 545 799 607 C 774 667 718 713 646 730 C 583 737 533 747 484 764 C 417 791 351 795 292 783 C 211 767 171 728 155 677 C 146 642 148 595 162 557 Z" fill="#7d5433" opacity=".29" transform="translate(8 14)" filter="url(#castShadow)"/>
+
+  <!-- Thin warm bevel visible at lower edge -->
+  <path d="M 159 560 C 190 497 282 415 370 365 C 456 318 531 300 597 306 C 692 310 753 350 795 419 C 838 488 831 547 809 609 C 784 674 733 713 670 729 C 616 743 553 741 500 758 C 436 779 381 791 317 781 C 241 773 184 741 160 687 C 145 656 146 606 159 560 Z" fill="url(#eggRim)"/>
+
+  <!-- Pure white surface of egg -->
+  <path d="M 164 553 C 197 493 281 421 372 371 C 463 321 535 305 597 307 C 685 310 743 348 783 414 C 816 467 817 517 798 569 C 774 630 734 675 683 697 C 642 715 601 711 566 716 C 515 724 490 742 430 751 C 370 763 324 753 285 743 C 220 726 182 690 165 651 C 156 626 155 581 164 553 Z" fill="url(#eggWhite)"/>
+
+  <!-- Yolk drop shadow (intentionally subtle on white) -->
+  <path d="M 629 418 C 650 442 657 475 658 513 C 661 550 635 591 609 611 C 572 642 521 654 477 654 C 419 658 378 644 354 627 C 325 604 311 575 311 540 C 311 486 350 427 409 399 C 492 353 568 366 629 418 Z" fill="#91603b" opacity=".17" transform="translate(5 7)" filter="url(#yolkShadow)"/>
+
+  <!-- Raised side of orange yolk -->
+  <path d="M 630 419 C 652 448 660 481 658 514 C 656 552 632 587 609 605 C 577 632 526 650 473 654 C 422 657 382 646 361 633 C 332 615 316 585 312 555 C 302 507 337 447 379 417 C 422 386 475 371 517 371 C 567 368 605 391 630 419 Z" fill="url(#yolkSide)"/>
+
+  <!-- Orange top surface, separately drawn from the shaded side -->
+  <path d="M 615 407 C 589 381 545 371 514 371 C 465 369 409 393 366 428 C 332 457 311 497 312 540 C 310 564 319 585 344 599 C 368 615 399 621 438 618 C 498 616 548 585 582 552 C 613 520 628 478 628 451 C 628 429 625 416 615 407 Z" fill="url(#yolkTop)"/>
+
+  <!-- Distinctive white specular glint -->
+  <path d="M 454 405 C 466 403 473 409 470 419 C 468 433 450 455 423 481 C 401 502 380 518 369 521 C 360 525 354 519 353 510 C 351 491 368 461 388 441 C 411 419 435 408 454 405 Z" fill="#fffefd"/>
+  <circle cx="359.5" cy="543.5" r="8.8" fill="#fffefd"/>
+</svg>
