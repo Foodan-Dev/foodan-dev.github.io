@@ -19,6 +19,10 @@ watchEffect(() => {
   document.title = page.value === 'index' ? '旦食文档 | 旦食 App' : `${current.value.title} | 旦食 App`
 })
 
+const privacyIntro = '名称为“旦食”、“旦食记”、“fdueat”的网站、APP 由复旦大学旦食团队（以下简称“我们”）运营和维护。本隐私政策适用于旦食移动应用（iOS 和 Android）以及 www.fdueat.com 官方网站，说明我们如何收集、使用、存储和保护你的个人信息。使用旦食即表示你同意本政策。'
+const termsIntro = '欢迎使用旦食。访问和使用「旦食」、「旦食记」移动应用及官方网站（以下统称“旦食”或“本服务”）即表示你同意遵守本使用条款。如果你不同意本条款的任何部分，请停止使用本服务。'
+const testFlightUrl = 'https://testflight.apple.com/join/pQvQXJmx'
+
 const privacySections = [
   {
     title: '一、我们收集的信息', blocks: [
@@ -33,7 +37,7 @@ const privacySections = [
   { title: '五、信息的共享与披露', paragraphs: ['我们不会将你的个人信息出售、出租或交易给任何第三方。仅在以下情况下可能共享或披露：'], items: ['经你明确同意；', '为遵守法律法规、司法程序或政府主管部门的强制性要求；', '为维护平台安全和其他用户的合法权益。'] },
   { title: '六、你的权利', items: ['查看和修改：你可以随时在应用内查看和修改你的昵称、性别、头像等个人资料。', '删除内容：你可以删除自己发布的帖子和评论。', '注销账号：你可以在 App 的“设置 → 账号与安全 → 注销账号”发起注销。当前版本注销后无法再登录，全部登录会话会被撤销；已发布的帖子、评论及其图片不会因注销被删除，原文永久保留，作者显示为“已注销用户”。个人资料不再向用户或管理员展示，后台暂时保留。举报证据、内容历史和审计记录的原始数据保留，其中的个人资料不再展示。当前注销不等同于账号资料和关联数据已全部删除。如需申请进一步删除个人信息或内容，请通过 support@fdueat.com 联系我们。'] },
   { title: '七、未成年人保护', paragraphs: ['旦食面向复旦大学在校师生，我们不主动向未满 14 周岁的未成年人提供服务。如果我们发现在未获得可核实的监护人同意的情况下收集了不满 14 周岁未成年人的个人信息，我们将尽快删除该信息。'] },
-  { title: '八、隐私政策的更新', paragraphs: ['我们可能会不时更新本政策。更新后的政策将在本页面发布，并更新顶部的“最近更新”日期。重大变更时，我们会通过应用内通知或邮件告知你。'] },
+  { title: '八、隐私政策的更新', paragraphs: ['我们会根据产品更新情况和法律法规相关要求，在官网更新本隐私政策。'] },
 ]
 
 const termsSections = [
@@ -47,14 +51,14 @@ const termsSections = [
   { title: '八、适用法律与争议解决', paragraphs: ['本条款适用中华人民共和国法律。因本条款产生的争议，双方应友好协商解决；协商不成的，任何一方可向旦食运营方所在地有管辖权的人民法院提起诉讼。'] },
 ]
 
-const faqs = [
+const faqs: { q: string; a: string; link?: { href: string; text: string } }[] = [
   { q: '如何下载 Android 版？', a: '在官网首页点击“下载 Android APK”，即可下载当前发布版本。页面会显示版本号和安装包大小。' },
-  { q: '如何申请 iOS 内测？', a: 'iPhone 目前通过 TestFlight 参与测试。请发送邮件至 support@fdueat.com，注明“申请 iOS 内测”和用于接收邀请的邮箱；收到邀请后，在 TestFlight 中安装旦食。' },
+  { q: '如何参加 iOS 内测？', a: 'iPhone 目前通过 TestFlight 参与测试，无需申请。先在 App Store 安装 TestFlight，然后在 iPhone 上打开下方的公开邀请链接（与官网首页“通过 TestFlight 安装”相同），按提示安装旦食。', link: { href: testFlightUrl, text: '打开 TestFlight 公开邀请链接' } },
   { q: '如何注册？', a: '打开旦食 App，点击“注册”，输入你的复旦大学邮箱（@fudan.edu.cn 或 @m.fudan.edu.cn），点击“获取验证码”，在邮箱中查收验证码后填入，设置密码和昵称即可完成注册。' },
   { q: '支持哪些邮箱注册？', a: '目前支持以 @fudan.edu.cn、@m.fudan.edu.cn 和 @fdueat.com 结尾的邮箱注册。' },
-  { q: '如何发布帖子？', a: '登录后，在首页点击右下角的发布按钮。你可以选择发布“分享帖”（推荐或避雷一道菜或一家窗口）或“提问帖”（询问美食推荐、排队情况等）。填写内容后，可以从相册选择图片上传，选择餐厅和窗口，然后点击发布。' },
+  { q: '如何发布帖子？', a: '登录后，点击底部导航栏中间的“发布”（宽屏设备在左侧导航栏）。你可以选择发布“分享帖”（推荐或避雷一道菜或一家窗口）或“提问帖”（询问美食推荐、排队情况等）。填写内容后，可以从相册选择图片上传，选择餐厅和窗口，然后点击发布。' },
   { q: '收不到验证码邮件？', a: '请检查邮箱的垃圾邮件文件夹。验证码邮件的发件人是 no-reply@danshi.fdueat.com。如果仍未收到，请等待 60 秒后重新发送。如果问题持续，请联系我们。' },
-  { q: '如何修改头像和昵称？', a: '登录后进入“个人”页面，点击头像或昵称即可修改。头像支持从手机相册选择图片上传。' },
+  { q: '如何修改头像和昵称？', a: '登录后进入“我的”页面，点击头像或昵称即可修改。头像支持从手机相册选择图片上传。' },
   { q: '如何反馈违规内容？', a: '在帖子或用户主页的“…”菜单中选择“举报”；手机端可长按评论后选择“举报”，桌面端使用评论旁的“…”菜单。提交后可在“设置 → 我的举报”查看进度和处理结果。若无法使用应用内入口或对结果有异议，请联系 support@fdueat.com，提供相关内容 ID 和说明，请勿发送密码或验证码。' },
   { q: '如何屏蔽用户？', a: '打开对方用户主页，点击右上角“…”并选择“屏蔽用户”，确认后将隐藏对方的内容和互动通知。可在“设置 → 已屏蔽用户”中解除屏蔽。' },
   { q: '如何注销账号？', a: '在 App 中打开“设置 → 账号与安全 → 注销账号”，阅读提示并确认即可。注销后无法登录，所有设备的会话都会失效；当前版本永久保留已发布的帖子、评论及其图片原文，作者显示为“已注销用户”；个人资料不再向用户或管理员展示，后台暂时保留。举报证据、内容历史和审计记录的原始数据保留，其中的个人资料不再展示。若旧版本没有该入口，请先更新 App；如遇操作问题或需申请进一步删除个人信息，请联系 support@fdueat.com。请勿发送密码或验证码。' },
@@ -92,6 +96,7 @@ const faqs = [
         </article>
 
         <article v-else-if="page === 'privacy'" class="prose">
+          <p class="docs-intro">{{ privacyIntro }}</p>
           <section v-for="section in privacySections" :key="section.title">
             <h2>{{ section.title }}</h2>
             <template v-if="'blocks' in section">
@@ -134,6 +139,7 @@ const faqs = [
         </article>
 
         <article v-else-if="page === 'terms'" class="prose">
+          <p class="docs-intro">{{ termsIntro }}</p>
           <section v-for="section in termsSections" :key="section.title">
             <h2>{{ section.title }}</h2>
             <p v-for="paragraph in section.paragraphs" :key="paragraph">{{ paragraph }}</p>
@@ -165,6 +171,8 @@ const faqs = [
                   <PhCaretRight :size="18" weight="bold" />
                 </summary>
                 <p>{{ faq.a }}</p>
+                <p v-if="faq.link"><a class="faq-link" :href="faq.link.href" target="_blank" rel="noreferrer">{{ faq.link.text }}
+                    <PhArrowUpRight :size="14" weight="bold" /></a></p>
               </details>
             </div>
           </section>
