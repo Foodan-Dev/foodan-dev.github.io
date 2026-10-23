@@ -85,9 +85,9 @@ test('a successful network response works when browser storage is disabled', asy
 function withVariants() {
   const manifest = fixture()
   manifest.android.variants = ['arm64-v8a', 'armeabi-v7a', 'x86_64'].map((abi, index) => {
-    const buildId = index === 2 ? '11111111-2222-3333-4444-555555555555' : manifest.android.buildId
+    const buildId = '11111111-2222-3333-4444-555555555555'
     return {
-      abi, buildId, versionCode: index === 2 ? 21 : 20,
+      abi, buildId, versionCode: 21,
       url: `https://dl.fdueat.com/releases/v0.10.0/${buildId}/DanShi-v0.10.0-testflight-${abi}.apk`,
       sizeBytes: [68123456, 55000000, 79155555][index], sha256: 'b'.repeat(64),
     }
@@ -95,17 +95,25 @@ function withVariants() {
   return manifest
 }
 
-test('older manifests and empty variants retain the default download', () => {
+test('older manifests retain the default download', () => {
   const manifest = fixture()
   assert.deepEqual(parseManifest(manifest), manifest)
-  manifest.android.variants = []
-  assert.deepEqual(parseManifest(manifest).android.variants, [])
 })
 
-test('accepts ordered variants including an independent x86 build and ABI subsets', () => {
+test('accepts three ordered variants from a separate build and version code', () => {
   const manifest = withVariants()
+  assert.notEqual(manifest.android.variants[0].buildId, manifest.android.buildId)
+  assert.notEqual(manifest.android.variants[0].versionCode, manifest.android.versionCode)
   assert.deepEqual(parseManifest(manifest), manifest)
-  manifest.android.variants = [manifest.android.variants[2]]
+})
+
+test('accepts variants sharing the default build and version code', () => {
+  const manifest = withVariants()
+  for (const variant of manifest.android.variants) {
+    variant.url = variant.url.replace(variant.buildId, manifest.android.buildId)
+    variant.buildId = manifest.android.buildId
+    variant.versionCode = manifest.android.versionCode
+  }
   assert.deepEqual(parseManifest(manifest), manifest)
 })
 
@@ -116,10 +124,24 @@ const invalidVariants = {
   'non-array variants': x => x.android.variants = {},
   'null variants': x => x.android.variants = null,
   'null entry': x => x.android.variants[1] = null,
+  'missing entry': x => delete x.android.variants[1],
   'missing ABI': x => delete x.android.variants[0].abi,
   'invalid build ID': x => x.android.variants[2].buildId = '../bad',
-  'different ARM build': x => x.android.variants[0] = { ...x.android.variants[2], abi: 'arm64-v8a' },
-  'different ARM version code': x => x.android.variants[0].versionCode++,
+  'extra entry': x => x.android.variants.push({ ...x.android.variants[2] }),
+}
+// Every incomplete ABI subset must be discarded, including the empty list.
+for (let mask = 0; mask < 7; mask++) {
+  invalidVariants[`partial ABI list: ${mask}`] = x => {
+    x.android.variants = x.android.variants.filter((_, index) => mask & (1 << index))
+  }
+}
+for (let index = 0; index < 3; index++) {
+  invalidVariants[`mismatched build ID at index ${index}`] = x => {
+    const variant = x.android.variants[index]
+    variant.url = variant.url.replace(variant.buildId, x.android.buildId)
+    variant.buildId = x.android.buildId
+  }
+  invalidVariants[`mismatched version code at index ${index}`] = x => x.android.variants[index].versionCode++
 }
 for (const [name, transform] of Object.entries({
   'wrong host': url => url.replace('dl.fdueat.com', 'evil.example'),

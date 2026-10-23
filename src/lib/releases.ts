@@ -48,22 +48,19 @@ function parseVariants(value: unknown, android: ReleaseManifest['android']): And
   if (value === undefined) return undefined
   // Optional metadata fails as a group without disabling the default download.
   try {
-    if (!Array.isArray(value)) return undefined
     const abis = Object.keys(androidVariantLabels)
-    let previousIndex = -1
-    return value.map((entry) => {
+    if (!Array.isArray(value) || value.length !== abis.length) return undefined
+    const first = record(value[0])
+    return Array.from(value, (entry, index) => {
       const variant = record(entry)
-      const index = typeof variant.abi === 'string' ? abis.indexOf(variant.abi) : -1
-      if (index <= previousIndex
+      if (variant.abi !== abis[index]
         || typeof variant.versionCode !== 'number' || !Number.isSafeInteger(variant.versionCode) || variant.versionCode <= 0
         || typeof variant.buildId !== 'string' || variant.buildId.length !== 36 || !/^[a-f0-9-]{36}$/.test(variant.buildId)
         || typeof variant.sizeBytes !== 'number' || !Number.isSafeInteger(variant.sizeBytes) || variant.sizeBytes <= 0
         || typeof variant.sha256 !== 'string' || variant.sha256.length !== 64 || !/^[a-f0-9]{64}$/.test(variant.sha256)
         || typeof variant.url !== 'string') throw new Error('Invalid Android variant')
-      previousIndex = index
-      if (variant.abi !== 'x86_64'
-        && (variant.buildId !== android.buildId || variant.versionCode !== android.versionCode)) {
-        throw new Error('Inconsistent ARM build')
+      if (variant.buildId !== first.buildId || variant.versionCode !== first.versionCode) {
+        throw new Error('Inconsistent variant build')
       }
       const prefix = `https://dl.fdueat.com/releases/v${android.version}/${variant.buildId}/`
       const filename = variant.url.slice(prefix.length)

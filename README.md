@@ -14,9 +14,9 @@ npm run build
 
 Android 显示 APK 版本、大小和发布日期，下载地址必须属于 `https://dl.fdueat.com/releases/` 且匹配清单版本与构建 ID。清单结构未知或链接不合法时拒绝使用。加载失败时可展示最近 30 天内成功获取并重新校验过的版本，明确提示当前并非已确认的最新版本；首次获取失败提供重试按钮。
 
-`schemaVersion` 保持 1。主按钮始终使用 `android.artifact`（兼容 armeabi-v7a 与 arm64-v8a 的 ARM 通用 APK）。可选 `android.variants` 按 arm64-v8a、armeabi-v7a、x86_64 顺序提供不重复的 ABI 子集；仅有效且非空时显示“其他版本”和各包大小。每项校验正整数 `sizeBytes` / `versionCode`、64 位小写十六进制 `sha256`、构建 ID，以及同版本、对应构建目录下的 HTTPS CDN APK 地址。ARM variants 必须与默认包使用同一构建 ID 和版本码，x86_64 可使用独立构建和版本码。
+`schemaVersion` 保持 1。主按钮始终使用 `android.artifact`（兼容 armeabi-v7a 与 arm64-v8a 的 ARM 通用 APK）。可选 `android.variants` 必须恰好包含 arm64-v8a、armeabi-v7a、x86_64 三项且保持此顺序，不接受部分列表；有效时显示“其他版本”和各包大小。三项来自同一次 EAS 构建，必须共享同一个 `buildId` 和 `versionCode`，但二者均可与默认包的 `android.buildId` / `android.versionCode` 不同。每项的 `buildId` 必须是由小写 `a-f`、数字和连字符组成的 36 字符 UUID 形字符串，`sizeBytes` / `versionCode` 必须为正安全整数，`sha256` 必须为 64 位小写十六进制。每项 URL 必须为 `https://dl.fdueat.com/releases/v<android.version>/<该项 buildId>/<file>.apk`，文件名仅允许字母、数字、下划线、连字符和点，且以字母、数字、下划线或连字符开头；不接受嵌套路径、查询参数或片段。
 
-兼容策略：缺失或空 variants 不显示入口；任一条目或整个 variants 字段格式错误时丢弃整组 variants，保留已通过校验的主下载及 iOS 信息，不修改输入对象。网络响应和缓存读取均使用此策略，缓存期限、请求及重试逻辑不变。
+兼容策略：缺失 variants 不显示入口；空列表、部分列表、任一条目或整个 variants 字段格式错误时丢弃整组 variants，保留已通过校验的主下载及 iOS 信息，不修改输入对象。网络响应和缓存读取均使用此策略，缓存期限、请求及重试逻辑不变。
 
 iOS 继续使用 TestFlight。没有公开邀请链接时显示“申请 iOS 内测”，前往技术支持页。未来清单提供真实 `https://testflight.apple.com/join/...` 链接后，官网会自动显示安装入口。
 
