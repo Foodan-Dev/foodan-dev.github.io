@@ -60,6 +60,12 @@ img { display: block; max-width: 100%; }
 .download-details a, .download-retry { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
 .download-error { color: var(--accent-deep); }
 .download-retry { padding: 0 4px; font: inherit; background: transparent; cursor: pointer; }
+.download-variants { margin-top: 12px; max-width: 100%; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
+.download-variants summary { width: fit-content; padding: 6px 0; cursor: pointer; font-weight: 650; }
+.download-variants ul { margin: 6px 0 0; padding: 6px 12px; list-style: none; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-warm); }
+.download-variants a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 8px 0; overflow-wrap: anywhere; }
+.download-variants a:hover { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }
+.variant-size { color: var(--muted); white-space: nowrap; }
 #download { scroll-margin-top: 100px; }
 .button-small { min-height: 40px; padding: 0 16px; font-size: 13px; }
 .text-link { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); font-size: 14px; font-weight: 650; }
