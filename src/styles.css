@@ -199,6 +199,7 @@ img { display: block; max-width: 100%; }
 .contact-links, .contact-card { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .contact-links a, .contact-card a { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink-soft); background: #fff; font-size: 13px; }
 .contact-links a:hover, .contact-card a:hover { border-color: var(--accent); color: var(--accent-deep); }
+.contact-card-hint { color: var(--muted); font-size: 12px; }
 .faq-list { display: grid; border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
 .faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 2px; cursor: pointer; list-style: none; color: var(--ink); font-size: 16px; font-weight: 650; }

@@ -27,6 +27,7 @@ Android 版本、大小与下载地址由浏览器运行时从 https://dl.fdueat
 
 - 下载 Android APK：使用 COS/CDN 频道清单中的当前地址。
 - [申请 iOS 内测](/docs/support)：iOS 通过 TestFlight 安装。
+- [加入公测 QQ 群](https://qm.qq.com/q/nJz7HxPYkw)
 - [GitHub](https://github.com/Foodan-Dev)
 
 ## 文档首页 `/docs`
@@ -443,6 +444,7 @@ Android 版本、大小与下载地址由浏览器运行时从 https://dl.fdueat
 
 - **邮箱**：[support@fdueat.com](mailto:support@fdueat.com)
 - **GitHub Issues**：[提交反馈](https://github.com/Foodan-Dev/Danshi-frontend/issues)
+- **公测 QQ 群**：[加入公测 QQ 群](https://qm.qq.com/q/nJz7HxPYkw)（群号 1094247146）
 
 ## 页脚信息（全站）
 

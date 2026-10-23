@@ -3,6 +3,7 @@ import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { PhArrowUpRight } from '@phosphor-icons/vue'
 import { cachedManifest, fetchManifest, type ReleaseManifest } from '../lib/releases'
+import { qqGroupUrl } from '../lib/qq-group'
 
 const release = ref<ReleaseManifest | null>(null)
 const loading = ref(true)
@@ -62,6 +63,7 @@ onBeforeUnmount(() => {
       通过 TestFlight 安装 <PhArrowUpRight :size="16" weight="bold" />
     </a>
     <RouterLink v-else class="text-link" to="/docs/support">申请 iOS 内测 <PhArrowUpRight :size="16" weight="bold" /></RouterLink>
+    <a class="text-link" :href="qqGroupUrl" target="_blank" rel="noreferrer">加入公测 QQ 群 <PhArrowUpRight :size="16" weight="bold" /></a>
   </div>
   <div class="download-details" aria-live="polite" aria-atomic="true">
     <p v-if="release">Android v{{ release.android.version }} · {{ downloadSize }} · {{ releaseDate }} 发布</p>
