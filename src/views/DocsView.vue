@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { PhArrowLeft, PhArrowUpRight, PhCaretRight, PhEnvelopeSimple, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhArrowLeft, PhArrowUpRight, PhCaretRight, PhEnvelopeSimple, PhGithubLogo, PhUsersThree } from '@phosphor-icons/vue'
 import CommunityConvention from '../components/CommunityConvention.vue'
+import { qqGroupNumber, qqGroupUrl } from '../lib/qq-group'
 
 type DocPage = 'index' | 'privacy' | 'terms' | 'community' | 'support'
 const route = useRoute()
@@ -190,6 +191,10 @@ const faqs: { q: string; a: string; link?: { href: string; text: string } }[] = 
                 <PhEnvelopeSimple :size="20" />support@fdueat.com
               </a><a href="https://github.com/Foodan-Dev/Danshi-frontend/issues" target="_blank" rel="noreferrer">
                 <PhGithubLogo :size="20" />提交反馈
+                <PhArrowUpRight :size="16" />
+              </a><a :href="qqGroupUrl" target="_blank" rel="noreferrer">
+                <PhUsersThree :size="20" />加入公测 QQ 群
+                <span class="contact-card-hint">{{ qqGroupNumber }}</span>
                 <PhArrowUpRight :size="16" />
               </a></div>
           </section>
