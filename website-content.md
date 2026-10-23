@@ -25,7 +25,8 @@ Android 版本、大小与下载地址由浏览器运行时从 https://dl.fdueat
 
 操作：
 
-- 下载 Android APK：使用 COS/CDN 频道清单中的当前地址。
+- 下载 Android APK：使用 COS/CDN 频道清单中的 android.artifact，默认是兼容 armeabi-v7a 和 arm64-v8a 的 ARM 通用安装包。
+- 其他版本：仅在清单提供有效且非空的 android.variants 时显示，可展开查看各安装包大小并下载：arm64-v8a（大多数新手机）、armeabi-v7a（较旧的 32 位手机）、x86_64（模拟器 / x86 设备）。
 - [申请 iOS 内测](/docs/support)：iOS 通过 TestFlight 安装。
 - [加入公测 QQ 群](https://qm.qq.com/q/nJz7HxPYkw)
 - [GitHub](https://github.com/Foodan-Dev)
@@ -404,6 +405,10 @@ Android 版本、大小与下载地址由浏览器运行时从 https://dl.fdueat
 旦食是面向复旦大学在校师生的校园美食分享平台。你可以在旦食上分享美食体验、发布就餐提问、浏览其他同学的推荐和评价，发现校园里的好味道。
 
 ## 常见问题
+
+### 下载哪个安卓安装包？
+
+通常直接点击首页的“下载 Android APK”即可，默认安装包兼容 32 位和 64 位 ARM 手机。如需更小的安装包，可展开“其他版本”：大多数新手机选择 arm64-v8a，较旧的 32 位手机选择 armeabi-v7a，模拟器或 x86 设备选择 x86_64。
 
 ### 如何注册？
 

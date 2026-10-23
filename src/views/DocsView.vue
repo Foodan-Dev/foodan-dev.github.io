@@ -56,6 +56,7 @@ const termsSections = [
 
 const faqs: { q: string; a: string; link?: { href: string; text: string } }[] = [
   { q: '如何下载 Android 版？', a: '在官网首页点击“下载 Android APK”，即可下载当前发布版本。页面会显示版本号和安装包大小。' },
+  { q: '下载哪个安卓安装包？', a: '通常直接点击首页的“下载 Android APK”即可，默认安装包兼容 32 位和 64 位 ARM 手机。如需更小的安装包，可展开“其他版本”：大多数新手机选择 arm64-v8a，较旧的 32 位手机选择 armeabi-v7a，模拟器或 x86 设备选择 x86_64。' },
   { q: '如何参加 iOS 内测？', a: 'iPhone 目前通过 TestFlight 参与测试，无需申请。先在 App Store 安装 TestFlight，然后在 iPhone 上打开下方的公开邀请链接（与官网首页“通过 TestFlight 安装”相同），按提示安装旦食。', link: { href: testFlightUrl, text: '打开 TestFlight 公开邀请链接' } },
   { q: '如何注册？', a: '打开旦食 App，点击“注册”，输入你的复旦大学邮箱（@fudan.edu.cn 或 @m.fudan.edu.cn），点击“获取验证码”，在邮箱中查收验证码后填入，设置密码和昵称即可完成注册。' },
   { q: '支持哪些邮箱注册？', a: '目前支持以 @fudan.edu.cn、@m.fudan.edu.cn 和 @fdueat.com 结尾的邮箱注册。' },

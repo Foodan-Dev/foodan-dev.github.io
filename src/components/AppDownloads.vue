@@ -2,13 +2,13 @@
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { PhArrowUpRight } from '@phosphor-icons/vue'
-import { cachedManifest, fetchManifest, type ReleaseManifest } from '../lib/releases'
+import { androidVariantLabels, cachedManifest, fetchManifest, formatDownloadSize, type ReleaseManifest } from '../lib/releases'
 import { qqGroupUrl } from '../lib/qq-group'
 
 const release = ref<ReleaseManifest | null>(null)
 const loading = ref(true)
 const downloadError = ref(false)
-const downloadSize = computed(() => release.value ? `${(release.value.android.artifact.sizeBytes / 1_000_000).toFixed(1)} MB` : '')
+const downloadSize = computed(() => release.value ? formatDownloadSize(release.value.android.artifact.sizeBytes) : '')
 const releaseDate = computed(() => release.value
   ? new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai' }).format(new Date(release.value.android.publishedAt)) : '')
 let request: AbortController | undefined
@@ -73,4 +73,15 @@ onBeforeUnmount(() => {
     </p>
     <p>iPhone 通过 TestFlight 参与测试。<RouterLink to="/docs">阅读使用文档</RouterLink></p>
   </div>
+  <details v-if="release?.android.variants?.length" class="download-variants">
+    <summary>其他版本</summary>
+    <ul>
+      <li v-for="variant in release.android.variants" :key="variant.abi">
+        <a :href="variant.url">
+          <span>{{ androidVariantLabels[variant.abi] }}</span>
+          <span class="variant-size">{{ formatDownloadSize(variant.sizeBytes) }}</span>
+        </a>
+      </li>
+    </ul>
+  </details>
 </template>
